@@ -12,7 +12,7 @@
 			</div>
 
 			<?php endwhile; ?>
-		
+
 			<div class="navigation">
 				<span class="previous-entries"><?php next_posts_link('Articles précédents') ?></span> <span class="next-entries"><?php previous_posts_link('Articles suivants') ?></span>
 			</div>

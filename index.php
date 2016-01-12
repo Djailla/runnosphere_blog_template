@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 	<div id="content">
-	<?php if (have_posts()) : ?>  
+	<?php if (have_posts()) : ?>
 
 		<?php while (have_posts()) : the_post(); ?>
 
@@ -21,7 +21,7 @@
 		<div class="navigation">
 			<span class="previous-entries"><?php next_posts_link('Articles précédents') ?></span> <span class="next-entries"><?php previous_posts_link('Articles suivants') ?></span>
 		</div>
-	
+
 	<?php else : ?>
 
 		<h2>Pas trouvé</h2>
@@ -29,10 +29,10 @@
 
 	<?php endif; ?>
 
-		    <!-- <div align="center"><iframe src="http://action.metaffiliation.com/emplacement.php?emp=74057I987438ca031098c4" width="468" height="60" scrolling="no" frameborder="0"></iframe></div> -->
+	<!-- <div align="center"><iframe src="http://action.metaffiliation.com/emplacement.php?emp=74057I987438ca031098c4" width="468" height="60" scrolling="no" frameborder="0"></iframe></div> -->
 
 	</div><!--/content -->
-	
+
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
