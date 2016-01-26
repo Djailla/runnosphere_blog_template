@@ -33,36 +33,20 @@
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/superfish.css" type="text/css" media="screen" />
 
 	<!-- JavaScript Hacks for IE -->
-
-
 	<script type="text/javascript" language="javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery-1.4.3.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.scrollTo-min.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/superfish.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/runnosphere.js"></script>
-
 	<script type="text/javascript" language="javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/runno_rss.js"></script>
 
-	<!-- Follow Button -->
-	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-
-	<!-- +1 button -->
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-
 	<script type="text/javascript">
-
 		//jQuery Ready
 		jQuery(document).ready(function() {
-
 			$('ul.sf-menu').superfish();
-
 			<?php echo get_on_ready(); ?>
-
 		});
-
 	</script>
-
 	<?php wp_head(); ?>
-
 </head>
 
 <body
@@ -146,65 +130,37 @@
 		?>
 
 		<div id="network_links">
-
 			<div class="network_link" id="network_tw">
 				<a href="http://twitter.com/Runnosphere" title="Twitter - Runnosphere.org" target="_blank">
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_twitter_black.png" alt="Twitter - Runnosphere.org" title="Twitter - Runnosphere.org" />
 				</a>
 			</div>
-
 			<div class="network_link" id="network_fb">
 				<a href="http://www.facebook.com/pages/Runnosphere/115298091866515" title="Facebook - Runnosphere.org" target="_blank">
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_facebook_black.png" alt="Facebook - Runnosphere.org" title="Facebook - Runnosphere.org" />
 				</a>
 			</div>
-
 			<div class="network_link" id="network_rss">
 				<a href="<?php bloginfo('rss2_url'); ?>" title="Flux RSS - Runnosphere.org" target="_blank">
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_rss_black.png" alt="Flux RSS - Runnosphere.org" title="Flux RSS - Runnosphere.org" />
 				</a>
 			</div>
-
-<!-- 			<div class="network_link" id="network_youtube">
-				<a href="http://www.youtube.com/user/Runnosphere" title="YouTube - Runnosphere.org" target="_blank">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header_youtube.png" alt="YouTube - Runnosphere.org" title="YouTube - Runnosphere.org" />
-				</a>
-			</div>
- -->
-<!-- 			<div class="network_link" id="network_flickr">
-				<a href="http://www.flickr.com/photos/runnosphere/" title="FlickR - Runnosphere.org" target="_blank">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header_flickr.png" alt="FlickR - Runnosphere.org" title="FlickR - Runnosphere.org" />
-				</a>
-			</div>
- -->
-
 		</div>
 
 		<!-- Search form -->
 		<div id="search_form_container_v2">
-
 			<div id="search_input_container_v2">
-
 				<form id="search_form" method="get" action="<?php bloginfo('url'); ?>">
-
 					<input type="text" name="s" id="search_input" value="Rechercher sur le blog" onclick="init_search_input();" onblur="init_search_input();" onkeyup="search_keypress(event);" />
-
 				</form>
-
 			</div>
-
 			<div id="search_input_valid_container_v2">
-
 				<a href="#" onclick="check_search();" title="Lancer la recherche">
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/menu/search_valid_button_v2.png" alt="Lancer la recherche" title="Lancer la recherche" />
 				</a>
-
 			</div>
-
 			<div id="search_input_close_v2"></div>
-
 	   </div>
-
 	</div>
 
 	<!-- New Menu V2 -->
