@@ -61,24 +61,7 @@ get_header(); ?>
 									 ?>
 								</a>
 							</div>
-<!-- 							<div class="post_share">
-								<div class="addthis_toolbox addthis_default_style">
-									<a class="addthis_button_facebook_like" fb:like:layout="button_count" addthis:url="<?php the_permalink(); ?>" addthis:title="Runnosphere.org - <?php the_title();?>"></a>
-									<a class="addthis_button_tweet" addthis:url="<?php the_permalink(); ?>" addthis:title="Runnosphere.org - <?php the_title();?>" tw:via="Runnosphere"></a>
-									<a class="addthis_button_compact" addthis:url="<?php the_permalink(); ?>" addthis:title="Runnosphere.org - <?php the_title();?>"></a>
-								</div>
-								<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cd6f4b502da3ed3"></script>
-
-								<div class="gle_plus_one_n">
-									<g:plusone size="medium" count="true" href="<?php the_permalink(); ?>"></g:plusone>
-								</div>
-
-								<div style="clear:both;"></div>
-							</div>
-
-							<div style="clear:both"></div>
- -->						</div>
-
+						</div>
 						<div class="post_cont">
 							<?php
 								//Get the enclosure SRC
@@ -136,7 +119,9 @@ get_header(); ?>
 						?>
 						<span class="rss_title_first"><?php print($first); ?></span><?php print($other); ?>
 					</a>
-					<a href="<?php print($rss_link); ?>" class="rss_img_link" title="Flux RSS" target="_blank"><img class="rss_img_logo" alt="Flux RSS" title="Flux RSS" src="<?php bloginfo('stylesheet_directory'); ?>/images/rss_logo.jpg" /></a>
+					<a href="<?php print($rss_link); ?>" class="rss_img_link" title="Flux RSS" target="_blank">
+						<img class="rss_img_logo" alt="Flux RSS" title="Flux RSS" src="<?php bloginfo('stylesheet_directory'); ?>/images/rss_logo.png" />
+					</a>
 				</div>
 				<div class="rss_sep">&nbsp;</div>
 				<div id="rss_loading">
