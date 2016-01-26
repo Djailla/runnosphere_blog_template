@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS Document for IE>6 but <8 */
+
+/* MENU */
+
+#search_input{
+	position:relative;
+	margin-left:5px;
+	padding-left:3px;
+	width:137px;
+	
+	border:none;
+	border:0;
+}
