@@ -104,16 +104,16 @@ body.body_bckgrnd{
 		min-height:120px;
 	}
 
-				#banniere{
-					position:relative;
-					width:673px;
-					height:auto;
-				}
+		#banniere{
+			position:relative;
+			width:673px;
+			height:auto;
+		}
 
-				#banniere a, #banniere a:hover, #banniere a:visited{
-					border:none;
-					text-decoration: none;
-				}
+		#banniere a, #banniere a:hover, #banniere a:visited{
+			border:none;
+			text-decoration: none;
+		}
 
 		#logo{
 			position:relative;
@@ -134,39 +134,13 @@ body.body_bckgrnd{
 
 			.network_link{
 				float:left;
+				margin-left:2px;
+				margin-right:2px;
 			}
-
-				#network_tw{
-					width:64px;
-					height:64px;
-					margin-left:5px;
-					margin-right:5px;
-				}
-
-				#network_fb{
-					width:64px;
-					height:64px;
-					margin-left:5px;
-					margin-right:5px;
-				}
-
-				#network_instagram{
-					width:64px;
-					height:64px;
-					margin-left:5px;
-					margin-right:5px;
-				}
-
-				#network_rss{
-					width:64px;
-					height:64px;
-					margin-left:5px;
-					margin-right:5px;
-				}
 
 		#search_form_container_v2{
 			position:absolute;
-			top:90px;
+			top:70px;
 			right:13px;
 
 			width:188px;
@@ -1059,12 +1033,11 @@ body.body_bckgrnd{
 
 							.rss_img_logo{
 								position:absolute;
-								top:1px;
+								top:10px;
 								right:12px;
 
-								width:36px;
-								height:36px;
-								border:none;
+								width:24px;
+								height:24px;
 							}
 
 					.rss_sep{
