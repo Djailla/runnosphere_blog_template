@@ -140,6 +140,11 @@
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_facebook_black.png" alt="Facebook - Runnosphere.org" title="Facebook - Runnosphere.org" />
 				</a>
 			</div>
+			<div class="network_link" id="network_ig">
+				<a href="http://www.instagram.com/runnosphere/" title="Instagram - Runnosphere.org" target="_blank">
+					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_instagram_black.png" alt="Instagram - Runnosphere.org" title="Instagram - Runnosphere.org" />
+				</a>
+			</div>
 			<div class="network_link" id="network_rss">
 				<a href="<?php bloginfo('rss2_url'); ?>" title="Flux RSS - Runnosphere.org" target="_blank">
 					<img src="<?php bloginfo('stylesheet_directory'); ?>/images/header/round_rss_black.png" alt="Flux RSS - Runnosphere.org" title="Flux RSS - Runnosphere.org" />
