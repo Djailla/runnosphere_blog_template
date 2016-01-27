@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Pasta Running Party - Runnosphère.org
+Plugin Name: Runnosphère.org: Pasta Running Party widget
 Plugin URI:
 Author: Jérémie PEREIRA
 Author URI: http://www.runnosphere.org
@@ -17,7 +17,7 @@ Version: 1.0
 class runnosphere_PASTA extends WP_Widget {
 	/** constructor */
 	function runnosphere_PASTA() {
-		parent::WP_Widget(false, $name = 'Pasta Running Party - Runnosphere');
+		parent::WP_Widget(false, $name = 'Runnosphere: Pasta Running Party');
 	}
 
 	/** @see WP_Widget::widget */
