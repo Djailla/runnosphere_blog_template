@@ -1,9 +1,5 @@
 <?php
 
-//Define a global for the V2...
-$v2 = true;
-$rss_v2 = true;
-
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'functions.php' == basename($_SERVER['SCRIPT_FILENAME']))
 die ('Please do not load this page directly. Thanks!');
 
@@ -91,6 +87,7 @@ function catch_that_image() {
 	}
 	return $first_img;
 }
+
 add_action( 'wp_head', 'insert_fb_in_head', 5 );
 
 if ( function_exists('register_sidebar') )
@@ -133,41 +130,24 @@ function rss_parsing_html($nb, $item_on_page){
 	$images_def = array();
 	$ids = array();
 
-	global $rss_v2;
-
-	if($rss_v2 == true){
-		//V2 is activated !
-		$args = array(
-			'exclude' => array(),
-			'orderby' => 'login',
-			'order' => 'ASC',
-			'fields' => 'all'
-		 );
-		 $users = get_users($args);
-		 foreach($users as $usr){
-			 $uid = $usr->ID;
-			 if(get_user_meta($uid, "rss_active", true) == "1"){
-				//Admin enable this RSS
-				$rss = get_user_meta($uid, "rss_address", true);
-				if(!empty($rss)){
-					$flux[] = stripslashes($rss);
-					$images[] = 1;
-					$images_def[] = get_simple_local_avatar( $uid, '37', '', false, true);
-					$ids[] = $uid;
-				}
-			 }
-		 }
-	//get_user_meta()
-	}else{
-		//BDD
-		$sel_req = "SELECT * FROM `wps_RSS` WHERE `online`='1';";
-		$rec = mysql_query($sel_req);
-
-		while($res = mysql_fetch_array($rec)){
-			$flux[] = stripslashes($res['url']);
-			$images[] = $res['image'];
-			$images_def[] = $res['image_def'];
-			$ids[] = $res['id'];
+	$args = array(
+		'exclude' => array(),
+		'orderby' => 'login',
+		'order' => 'ASC',
+		'fields' => 'all'
+	);
+	$users = get_users($args);
+	foreach($users as $usr){
+		$uid = $usr->ID;
+		if(get_user_meta($uid, "rss_active", true) == "1"){
+			//Admin enable this RSS
+			$rss = get_user_meta($uid, "rss_address", true);
+			if(!empty($rss)){
+				$flux[] = stripslashes($rss);
+				$images[] = 1;
+				$images_def[] = get_simple_local_avatar( $uid, '37', '', false, true);
+				$ids[] = $uid;
+			}
 		}
 	}
 
@@ -179,11 +159,7 @@ function rss_parsing_html($nb, $item_on_page){
 	for($j = 0; $j < sizeof($flux); $j++){
 
 		$error = 0;
-		if($rss_v2 == true){
-			$rss_web = dirname(__FILE__)."/cron/xml_v2/rss-".$ids[$j].".xml";
-		}else{
-			$rss_web = dirname(__FILE__)."/cron/xml/rss-".$ids[$j].".xml";
-		}
+		$rss_web = dirname(__FILE__)."/cron/xml_v2/rss-".$ids[$j].".xml";
 		$rss_image = $images[$j];
 		$rss_def = $images_def[$j];
 
@@ -281,11 +257,7 @@ function rss_parsing_html($nb, $item_on_page){
 		}else{
 			//enclosure ok
 			$html .= '<div class="rss_item_enclosure">';
-			if($rss_v2 == true){
-				$html .= '<img class="rss_item_img_enclosure" src="'.$my_item['enclosure'].'" />';
-			}else{
-				$html .= '<img class="rss_item_img_enclosure" src="'.get_bloginfo('stylesheet_directory').'/resizer.php?mode=url&width=36&height=36&file='.$my_item['enclosure'].'" />';
-			}
+			$html .= '<img class="rss_item_img_enclosure" src="'.$my_item['enclosure'].'" />';
 			$html .= '</div>';
 
 			$html .= '<div class="rss_item_content_right">';
@@ -359,41 +331,24 @@ function rss_parsing_rss($nb){
 	$images_def = array();
 	$ids = array();
 
-	global $rss_v2;
-
-	if($rss_v2 == true){
-		//V2 is activated !
-		$args = array(
-			'exclude' => array(),
-			'orderby' => 'login',
-			'order' => 'ASC',
-			'fields' => 'all'
-		 );
-		 $users = get_users($args);
-		 foreach($users as $usr){
-			 $uid = $usr->ID;
-			 if(get_user_meta($uid, "rss_active", true) == "1"){
-				//Admin enable this RSS
-				$rss = get_user_meta($uid, "rss_address", true);
-				if(!empty($rss)){
-					$flux[] = stripslashes($rss);
-					$images[] = 1;
-					$images_def[] = get_simple_local_avatar( $uid, '96', '', false, true);
-					$ids[] = $uid;
-				}
-			 }
-		 }
-		 //get_user_meta()
-	}else{
-		//BDD
-		$sel_req = "SELECT * FROM `wps_RSS` WHERE `online`='1';";
-		$rec = mysql_query($sel_req);
-
-		while($res = mysql_fetch_array($rec)){
-			$flux[] = stripslashes($res['url']);
-			$images[] = $res['image'];
-			$images_def[] = $res['image_def'];
-			$ids[] = $res['id'];
+	$args = array(
+		'exclude' => array(),
+		'orderby' => 'login',
+		'order' => 'ASC',
+		'fields' => 'all'
+	);
+	$users = get_users($args);
+	foreach($users as $usr){
+		$uid = $usr->ID;
+		if(get_user_meta($uid, "rss_active", true) == "1"){
+			//Admin enable this RSS
+			$rss = get_user_meta($uid, "rss_address", true);
+			if(!empty($rss)){
+				$flux[] = stripslashes($rss);
+				$images[] = 1;
+				$images_def[] = get_simple_local_avatar( $uid, '96', '', false, true);
+				$ids[] = $uid;
+			}
 		}
 	}
 
@@ -402,11 +357,7 @@ function rss_parsing_rss($nb){
 
 	for($j = 0; $j < sizeof($flux); $j++){
 		$error = 0;
-		if($rss_v2 == true){
-			$rss_web = dirname(__FILE__)."/cron/xml_v2/rss-".$ids[$j].".xml";
-		}else{
-			$rss_web = dirname(__FILE__)."/cron/xml/rss-".$ids[$j].".xml";
-		}
+		$rss_web = dirname(__FILE__)."/cron/xml_v2/rss-".$ids[$j].".xml";
 
 		if(!file_exists($rss_web)){
 			$error = 1;
@@ -611,22 +562,17 @@ function update_comment_type_cache($queried_posts) {
 add_filter('the_posts', 'update_comment_type_cache');
 
 //FOR ADMIN
-global $v2;
-if($v2 != true){
-	add_action('admin_menu', 'add_theme_runno');
+add_action('admin_menu', 'add_theme_runno');
 
-	function add_theme_runno() {
-		//RSS ADMIN
-		add_submenu_page('themes.php', 'Runno RSS', "G&eacute;rer les flux RSS", 1, __FILE__, go_to_rss);
+function add_theme_runno() {
+	//RSS ADMIN
+	add_submenu_page('themes.php', 'Runno RSS', "G&eacute;rer les flux RSS", 1, __FILE__, go_to_rss);
 
 
-	}
+}
 
-	function go_to_rss(){
-
-		   echo("<div><br /><br /><br /><a href='".get_bloginfo('url')."/wp-content/themes/runnosphere/rss_admin/'>Acc&eacute;der &agrave; la gestion des flux RSS pour la Runnosph&egrave;re</a></div>");
-	}
-
+function go_to_rss(){
+	echo("<div><br /><br /><br /><a href='".get_bloginfo('url')."/wp-content/themes/runnosphere/rss_admin/'>Acc&eacute;der &agrave; la gestion des flux RSS pour la Runnosph&egrave;re</a></div>");
 }
 
 
