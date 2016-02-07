@@ -39,6 +39,6 @@
 		}
 	}
 
-	$new_array = array_map(create_function('$key, $value', 'return $key.": ".$value;'), array_keys($ok), array_values($ok));
-	mail("bastien.vallet@gmail.com", "Runno RSS : CRON", "RESULT  :\n".implode("\n", $new_array));
+	// $new_array = array_map(create_function('$key, $value', 'return $key.": ".$value;'), array_keys($ok), array_values($ok));
+	// mail("bastien.vallet@gmail.com", "Runno RSS : CRON", "RESULT  :\n".implode("\n", $new_array));
 ?>
