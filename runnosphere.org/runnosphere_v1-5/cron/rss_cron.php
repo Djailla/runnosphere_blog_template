@@ -22,23 +22,35 @@
 				$flux = stripslashes($rss);
 				$error = 0;
 
-				if(!@$fluxrss=simplexml_load_file($flux, 'SimpleXMLElement', LIBXML_NOCDATA)){
-						$error = 1;
-						$ok[$uid] = "error : ".$flux;
+				$curl = curl_init();
+				curl_setopt_array($curl, Array(
+					CURLOPT_URL            => $flux,
+					CURLOPT_USERAGENT      => 'spider',
+					CURLOPT_TIMEOUT        => 120,
+					CURLOPT_CONNECTTIMEOUT => 30,
+					CURLOPT_RETURNTRANSFER => TRUE,
+					CURLOPT_ENCODING       => 'UTF-8'
+				));
+				$data = curl_exec($curl);
+				curl_close($curl);
+
+				if(!@$fluxrss=simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA)){
+					$error = 1;
+					$ok[$uid] = "error : ".$flux;
 				}
 
 				if($error == 0){
-						$path = dirname(__FILE__)."/xml_v2/rss-".$uid.".xml";
+					$path = dirname(__FILE__)."/xml_v2/rss-".$uid.".xml";
 
-						file_put_contents($path, "");
-						file_put_contents($path, file_get_contents($flux));
+					file_put_contents($path, "");
+					file_put_contents($path, file_get_contents($flux));
 
-						$ok[$uid] = "ok";
+					$ok[$uid] = "ok";
 				}
 			}
 		}
 	}
 
-	// $new_array = array_map(create_function('$key, $value', 'return $key.": ".$value;'), array_keys($ok), array_values($ok));
-	// mail("bastien.vallet@gmail.com", "Runno RSS : CRON", "RESULT  :\n".implode("\n", $new_array));
+	$new_array = array_map(create_function('$key, $value', 'return $key.": ".$value;'), array_keys($ok), array_values($ok));
+	mail("bastien.vallet@gmail.com", "Runno RSS : CRON", "RESULT  :\n".implode("\n", $new_array));
 ?>
