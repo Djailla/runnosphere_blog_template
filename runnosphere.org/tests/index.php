@@ -2,35 +2,49 @@
 
 	libxml_use_internal_errors(true);
 
+	$path = dirname(__FILE__)."/rss-aaa.xml";
+
 	// URL OK :
 	// $rss = "http://feeds.feedburner.com/LeBlogDeDjailla";
 
 	// URL KO :
-	$rss = "http://www.jerem-runner.com/rss";
+	$flux = "http://www.jerem-runner.com/rss";
 
-	if(!empty($rss)){
-		$flux = stripslashes($rss);
-		$error = 0;
+	if(!@$fluxrss=simplexml_load_file($flux, 'SimpleXMLElement', LIBXML_NOCDATA)){
+		$curl = curl_init();
+		curl_setopt_array($curl, Array(
+			CURLOPT_URL            => $flux,
+			CURLOPT_USERAGENT      => 'spider',
+			CURLOPT_TIMEOUT        => 120,
+			CURLOPT_CONNECTTIMEOUT => 30,
+			CURLOPT_RETURNTRANSFER => TRUE,
+			CURLOPT_ENCODING       => 'UTF-8'
+		));
+		$data = curl_exec($curl);
+		curl_close($curl);
 
-		print_r($flux);
 
-		if(!@$fluxrss=simplexml_load_file($flux, 'SimpleXMLElement', LIBXML_NOCDATA)){
-			    $errors = libxml_get_errors();
-			    print_r($errors);
+		echo '<pre>';
+		print_r($data);
+		echo '</pre>';
 
-				$error = 1;
-				$ok[$uid] = "error : ".$flux;
+		if(!@$rss_data=simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA)){
+			$error = 1;
+			$ok[$uid] = "error : ".$flux;
 		}
+		else {
+			file_put_contents($path, "");
+			file_put_contents($path, $data);
 
-		if($error == 0){
-				$path = dirname(__FILE__)."/xml_v2/rss-".$uid.".xml";
-
-				file_put_contents($path, "");
-				file_put_contents($path, file_get_contents($flux));
-
-				$ok[$uid] = "ok";
+			$ok[$uid] = "ok";
 		}
 	}
-	print_r($ok);
+	else {
+		file_put_contents($path, "");
+		file_put_contents($path, file_get_contents($flux));
 
+		$ok[$uid] = "ok";
+	}
+
+	print_r($ok)
 ?>
