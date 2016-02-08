@@ -2,6 +2,10 @@
 
 	libxml_use_internal_errors(true);
 
+	// URL OK :
+	// $rss = "http://feeds.feedburner.com/LeBlogDeDjailla";
+
+	// URL KO :
 	$rss = "http://www.jerem-runner.com/rss";
 
 	if(!empty($rss)){
